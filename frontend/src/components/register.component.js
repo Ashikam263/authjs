@@ -123,7 +123,7 @@ export default class Register extends Component {
   render() {
     return (
       <div className="d-flex justify-content-center align-items-center">
-        <div className="card p-4 shadow-lg">
+        <div className="card p-2 shadow-lg">
           <div className="card-body">
             <h3 className="card-title text-center mb-4">Sign Up</h3>
             <div className="text-center mb-4">
