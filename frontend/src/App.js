@@ -62,70 +62,82 @@ class App extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-             Flick
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
-
-            {showModeratorBoard && (
-              <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )}
-
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
+        <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+          <div className="container">
+            <Link to={"/"} className="navbar-brand text-dark">
+              Flick
+            </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link to={"/home"} className="nav-link text-dark">
+                    Home
+                  </Link>
+                </li>
+                {showModeratorBoard && (
+                  <li className="nav-item">
+                    <Link to={"/mod"} className="nav-link text-dark">
+                      Moderator Board
+                    </Link>
+                  </li>
+                )}
+                {showAdminBoard && (
+                  <li className="nav-item">
+                    <Link to={"/admin"} className="nav-link text-dark">
+                      Admin Board
+                    </Link>
+                  </li>
+                )}
+                {currentUser && (
+                  <li className="nav-item">
+                    <Link to={"/user"} className="nav-link text-dark">
+                      User
+                    </Link>
+                  </li>
+                )}
+              </ul>
+              <ul className="navbar-nav ml-auto">
+                {currentUser ? (
+                  <>
+                    <li className="nav-item">
+                      <Link to={"/profile"} className="nav-link text-dark">
+                        {currentUser.username}
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <a href="/login" className="nav-link text-dark" onClick={this.logOut}>
+                        LogOut
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <Link to={"/login"} className="nav-link text-dark">
+                        Login
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/register"} className="nav-link text-dark">
+                        SignUp
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
-
-          {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
-          ) : (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                  LogIn
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  SignUp
-                </Link>
-              </li>
-            </div>
-          )}
         </nav>
 
         <div className="container mt-3">
@@ -145,6 +157,6 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 export default App;
